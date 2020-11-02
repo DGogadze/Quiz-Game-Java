@@ -1,4 +1,6 @@
-package quizgame;
+import quizgame.Quiz;
+import quizgame.QuizTimer;
+import quizgame.WindowThread;
 
 public class Main {
     public static void main(String[] args){

@@ -1,6 +1,6 @@
 package quizgame;
 
-class QuizTimer extends Thread {
+public class QuizTimer extends Thread {
     @Override
     public void run() {
         for (int i = 180; i >= 0; i--) {

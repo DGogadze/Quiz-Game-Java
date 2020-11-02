@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-class WindowThread extends Thread{
-    public static String[] capitalArray = {"Erevan","Minsk","Beijing","Copenhagen","Cairo","Paris","Budapest","Tbilisi","Rome","Washington"
+public class WindowThread extends Thread{
+    public static String[] capitalArray = {"Yerevan","Minsk","Beijing","Copenhagen","Cairo","Paris","Budapest","Tbilisi","Rome","Washington"
     ,"Kingston","Tokyo","Kuwait City","Harare","London","Moscow","Berlin"};
     Quiz quiz = new Quiz();
     public static int randomisation;
