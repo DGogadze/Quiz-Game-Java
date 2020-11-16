@@ -53,38 +53,9 @@ public class WindowThread extends Thread{
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (answerField.getText().equals(capitalArray[iterator])){
-                    randomisation = (int) (Math.random() * 10);
-                    score+= randomisation+1;
-                    scoreLabel.setText("Score:"+score);
-                    answerField.setText("");
-                    afterAnswerLabel.setText("Correct,you gain " + (randomisation+1) + " points");
-                    afterAnswerLabel.setForeground(Color.GREEN);
-                    if (score>=0)
-                        scoreLabel.setForeground(Color.GREEN);
-                    else
-                        scoreLabel.setForeground(Color.RED);
-                    myBox.repaint();
-                    quiz.run();
-                }
-                else if (answerField.getText().equals("")){
-                    afterAnswerLabel.setText("Your field is empty");
-                    afterAnswerLabel.setForeground(SystemColor.DARK_GRAY);
-                }
-                else {
-                    randomisation = (int) (Math.random() * 10);
-                    score-= randomisation-1;
-                    scoreLabel.setText("Score:"+score);
-                    afterAnswerLabel.setText("You are wrong,you lose " + (randomisation-1) + " points");
-                    afterAnswerLabel.setForeground(Color.RED);
-                    answerField.setText("");
-                    if (score>=0)
-                        scoreLabel.setForeground(Color.GREEN);
-                    else
-                        scoreLabel.setForeground(Color.RED);
-                    myBox.repaint();
-                    quiz.run();
-                }
+                /**
+                 * Database event here!
+                 */
             }
         });
         submitButton.setBounds(windowX-75,windowY+50,150,20);
