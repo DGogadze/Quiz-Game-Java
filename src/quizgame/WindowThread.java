@@ -6,10 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
 
 public class WindowThread extends Thread{
-    public static String[] capitalArray = {"Yerevan","Minsk","Beijing","Copenhagen","Cairo","Paris","Budapest","Tbilisi","Rome","Washington"
-    ,"Kingston","Tokyo","Kuwait City","Harare","London","Moscow","Berlin"};
+    private DataAccessObject dao = new DataAccessObject();
+    private ResultSet resultSet = null;
+    public static String[] capitalArray = new String[17];
     Quiz quiz = new Quiz();
     public static int randomisation;
     JLabel afterAnswerLabel = new JLabel();
@@ -29,6 +31,21 @@ public class WindowThread extends Thread{
     public static JPanel container = new JPanel();
     @Override
     public void run(){
+        try {
+            dao.ConnectToMySql();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        resultSet = dao.getResultSet();
+        try {
+            int iterator = 0;
+            while (resultSet.next()){
+                capitalArray[iterator]=resultSet.getString("capital");
+                iterator++;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         myBox.add(container);
         myBox.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         myBox.setLocation(width/4,height/4);
@@ -53,9 +70,6 @@ public class WindowThread extends Thread{
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /**
-                 *  Change If Statement Here
-                 */
                 if (answerField.getText().equals(capitalArray[iterator])){
                     randomisation = (int) (Math.random() * 10);
                     score+= randomisation+1;

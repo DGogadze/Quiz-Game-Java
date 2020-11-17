@@ -33,6 +33,7 @@ public class DataAccessObject {
             statement.close();
         }
     }
+
     public void writeResultSet(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             String id = "" + resultSet.getInt("id");
@@ -47,6 +48,13 @@ public class DataAccessObject {
     }
 
     public ResultSet getResultSet(){
+        try {
+            statement = connect.createStatement();
+            resultSet = statement
+                    .executeQuery("select * from quizgamedatabase.quiz");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return resultSet;
     }
 
