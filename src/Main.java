@@ -11,9 +11,11 @@ public class Main {
         myBox.start();
         quiz.run();
         quizTimer.start();
+        System.out.println("Loading database...");
         DataAccessObject dao = new DataAccessObject();
         dao.ConnectToMySql();
         dao.readDataFromMySql();
         dao.close();
+        System.out.println("Database loaded!");
     }
 }
